@@ -1,5 +1,6 @@
 // main file to execute functions
 
-import { fetchMovies } from './modules/index.js';
+import { fetchMovies, fetchPopularMovies } from './modules/index.js';
 
-fetchMovies();
+fetchMovies(); // fetch for use on manual search
+fetchPopularMovies(); // fetch for use to display default cards on homepage

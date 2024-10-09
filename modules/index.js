@@ -2,12 +2,12 @@
 
 // --- Begin import section ---
 
-import { fetchMovies } from './fetch.js';
+import { fetchMovies, fetchPopularMovies } from './fetch.js';
 
 // --- End import section ---
 
 // --- Begin export section ---
 
-export { fetchMovies };
+export { fetchMovies, fetchPopularMovies };
 
 // --- Begin export section ---
