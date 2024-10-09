@@ -60,4 +60,9 @@ function createHeader() {
     return header;
 }
 
-export {createHeader}
+function createFooter() { 
+
+}
+
+
+export {createHeader, createFooter}
