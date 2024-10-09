@@ -7,16 +7,21 @@ function addFavorite(item) {
         
     movies.push(item);
     localStorage.setItem('movies', JSON.stringify(movies));
-    console.log(movies);
+    console.log("addFavorite" + movies);
 }
 
 function removeFavorite(item) {
-    localStorage.removeItem('movies', item);
-    console.log(removeFavorite);
+    let movies = JSON.parse(localStorage.getItem('movies')) || [];   
+    console.log("removeFavorite1", movies);
+
+    movies = movies.filter(x => x.id !== item.id);
+    localStorage.setItem('movies', JSON.stringify(movies));
+    
+    console.log("removeFavorite", movies);
 }
 
 function getFavorites() {
-    console.log(getFavorites);
+    console.log(localStorage.getItem('movies'));
     return localStorage.getItem('movies') || [];
 }
 
