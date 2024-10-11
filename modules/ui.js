@@ -1,8 +1,12 @@
+import { addFavorite } from "./index.js";
+
 // functions to display data
 function createCard(data) {
   const card = document.createElement('div');
 
   card.classList.add(
+    'flex',
+    'flex-col',
     'bg-slate-800',
     'shadow-lg',
     'h-64',
@@ -10,8 +14,6 @@ function createCard(data) {
     'border-solid',
     'border-1',
     'border-slate-800',
-    'flex',
-    'flex-row',
     'text-sm',
     'rounded-t',
     'm-2'
@@ -33,7 +35,8 @@ function createCard(data) {
     'text-white',
     'font-bold',
     'p-2',
-    'mt-2'
+    'mt-2',
+    'font-thin'
   );
   const movieGenre = document.createElement('p');
   movieGenre.textContent = data.genres;
@@ -59,14 +62,15 @@ function createCard(data) {
     'hover:bg-amber-800',
     'active:bg-amber-950'
   );
+
   addToJournalBtn.onclick = () => {
-    addToLocalStorage('card', data);
+    addFavorite(data);
   };
 
   card.appendChild(movieImage);
   card.appendChild(movieTitle);
-  card.appendChild(movieGenre);
-  card.appendChild(movieRelease);
+  //card.appendChild(movieGenre);
+  //card.appendChild(movieRelease);
   card.appendChild(addToJournalBtn);
 
   return card;
