@@ -8,8 +8,17 @@ import {
 } from './modules/index.js';
 
 document.body.insertAdjacentElement('afterbegin', createHeader());
-// document.body.insertAdjacentElement('beforeend', createFooter());
+document.addEventListener('DOMContentLoaded', async () => {
+  const movieContainer = document.getElementById('movie-container');
+  try {
+    const movies = await fetchPopularMovies();
+    movies.results.forEach((movie) => {
+      const movieCard = createCard(movie);
+      movieContainer.appendChild(movieCard);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+});
 
-const movies = await fetchPopularMovies(); // fetch for use to display default cards on homepage
-console.log(movies);
-await fetchMovies(); // fetch for use on manual search
+// document.body.insertAdjacentElement('beforeend', createFooter());

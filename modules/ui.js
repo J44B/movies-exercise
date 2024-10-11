@@ -2,7 +2,6 @@
 function createCard(data) {
   const card = document.createElement('div');
 
-
   card.classList.add(
     'bg-slate-800',
     'shadow-lg',
@@ -18,7 +17,7 @@ function createCard(data) {
     'm-2'
   );
   const movieImage = document.createElement('img');
-  movieImage.src = data.poster_path;
+  movieImage.src = `https://image.tmdb.org/t/p/original${data.poster_path}`;
   movieImage.classList.add(
     'h-2/3',
     'w-full',
@@ -35,21 +34,14 @@ function createCard(data) {
     'font-bold',
     'p-2',
     'mt-2'
-  )
+  );
   const movieGenre = document.createElement('p');
   movieGenre.textContent = data.genres;
-  movieGenre.classList.add(
-    'text-white',
-    'p-2',
-    'mt-2'
-  );
+  movieGenre.classList.add('text-white', 'p-2', 'mt-2');
 
   const movieRelease = document.createElement('p');
   movieRelease.textContent = data.release_date;
-  movieRelease.classList.add(
-    'text-white',
-    'p-2'
-  );
+  movieRelease.classList.add('text-white', 'p-2');
 
   const addToJournalBtn = document.createElement('button');
   addToJournalBtn.textContent = 'Add to Journal';
@@ -71,9 +63,6 @@ function createCard(data) {
     addToLocalStorage('card', data);
   };
 
-
-
-
   card.appendChild(movieImage);
   card.appendChild(movieTitle);
   card.appendChild(movieGenre);
@@ -84,16 +73,16 @@ function createCard(data) {
 }
 
 function createHeader() {
-    const header = document.createElement('header');
-    header.classList.add(
-      'flex',
-      'flex-row',
-      'align-center',
-      'justify-between',
-      'm-4',
-      'p-2',
-      'bg-gray-300'
-    );
+  const header = document.createElement('header');
+  header.classList.add(
+    'flex',
+    'flex-row',
+    'align-center',
+    'justify-between',
+    'm-4',
+    'p-2',
+    'bg-gray-300'
+  );
 
   const logo = document.createElement('img');
   logo.classList = 'h-10 w-80';
@@ -169,7 +158,4 @@ function createHeader() {
 
 function createFooter() {}
 
-
-
-export {createHeader, createFooter, createCard}
-
+export { createHeader, createFooter, createCard };
