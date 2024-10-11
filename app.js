@@ -5,11 +5,27 @@ import {
   fetchPopularMovies,
   createHeader,
   createCard,
+  addFavorite
 } from './modules/index.js';
 
 document.body.insertAdjacentElement('afterbegin', createHeader());
-// document.body.insertAdjacentElement('beforeend', createFooter());
 
-const movies = await fetchPopularMovies(); // fetch for use to display default cards on homepage
-console.log(movies);
-await fetchMovies(); // fetch for use on manual search
+document.addEventListener('DOMContentLoaded', async () => {
+  const movieContainer = document.getElementById('movie-container');
+  try {
+    const movies = await fetchPopularMovies();
+    movies.results.forEach((movie) => {
+      const [movieCard, addToJournalBtn] = createCard(movie);
+
+      movieContainer.appendChild(movieCard);
+
+      addToJournalBtn.onclick = () => {
+        addFavorite(movie);
+      };
+    });
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+// document.body.insertAdjacentElement('beforeend', createFooter());
