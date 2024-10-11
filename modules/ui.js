@@ -1,7 +1,13 @@
-import { addFavorite } from "./index.js";
-
-// functions to display data
 function createCard(data) {
+    return createCardComponent(data, createAddFavoriteButton()) 
+}
+
+function createJournalCard(data) {
+    return createCardComponent(data, createRemoveFavoriteButton()) 
+}
+
+// private function
+function createCardComponent(data, button) {
   const card = document.createElement('div');
 
   card.classList.add(
@@ -46,34 +52,56 @@ function createCard(data) {
   movieRelease.textContent = data.release_date;
   movieRelease.classList.add('text-white', 'p-2');
 
-  const addToJournalBtn = document.createElement('button');
-  addToJournalBtn.textContent = 'Add to Journal';
-  addToJournalBtn.classList.add(
-    'bg-amber-600',
-    'border-solid',
-    'border-slate-300',
-    'rounded',
-    'w-1/2',
-    'p-1',
-    'text-xs',
-    'text-orange-100',
-    'mx-auto',
-    'mb-1',
-    'hover:bg-amber-800',
-    'active:bg-amber-950'
-  );
-
-  addToJournalBtn.onclick = () => {
-    addFavorite(data);
-  };
-
   card.appendChild(movieImage);
   card.appendChild(movieTitle);
   //card.appendChild(movieGenre);
   //card.appendChild(movieRelease);
-  card.appendChild(addToJournalBtn);
+  card.appendChild(button);
+  
+  return [card, button];
+}
 
-  return card;
+function createAddFavoriteButton()
+{
+    const addToJournalBtn = document.createElement('button');
+    addToJournalBtn.textContent = 'Add to Journal';
+    addToJournalBtn.classList.add(
+      'bg-amber-600',
+      'border-solid',
+      'border-slate-300',
+      'rounded',
+      'w-1/2',
+      'p-1',
+      'text-xs',
+      'text-orange-100',
+      'mx-auto',
+      'mb-1',
+      'hover:bg-amber-800',
+      'active:bg-amber-950'
+    );
+    return addToJournalBtn;
+}
+
+function createRemoveFavoriteButton()
+{
+    const removeFromJournalBtn = document.createElement('button');
+    removeFromJournalBtn.textContent = 'Remove from Journal';
+    removeFromJournalBtn.classList.add(
+      'bg-amber-600',
+      'border-solid',
+      'border-slate-300',
+      'rounded',
+      'w-1/2',
+      'p-1',
+      'text-xs',
+      'text-red-100',
+      'mx-auto',
+      'mb-1',
+      'hover:bg-amber-800',
+      'active:bg-amber-950'
+    );
+
+    return removeFromJournalBtn;
 }
 
 function createHeader() {
@@ -162,4 +190,4 @@ function createHeader() {
 
 function createFooter() {}
 
-export { createHeader, createFooter, createCard };
+export { createHeader, createFooter, createCard, createJournalCard};
