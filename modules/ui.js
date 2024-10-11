@@ -5,10 +5,6 @@ function createHeader() {
     header.classList = 
     'flex flex-row flex-nowrap gap-4 items-center justify-around align-baseline border-3 rounded-md';
 
-    /*  <header class="flex flex-row flex-nowrap gap-4 items-center justify-around align-baseline bg-gradient-to-r from-[#2C5F65] to-[#346B71] border-3 rounded-md">
-    ...   
-    </header>*/
-
     const logo = document.createElement('img');
     logo.classList = 'h-10 w-auto'
     logo.src = 'https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg'
@@ -16,7 +12,6 @@ function createHeader() {
     const nav = document.createElement('nav');
     const ul = document.createElement('ul');
     
-    //<ul class="flex flex-col content-around lg:flex-row lg:gap-4 border-r-2 pr-16">
     ul.classList ='flex flex-col content-around lg:flex-row lg:gap-4 border-r-2 pr-16';
 
     const home = document.createElement('li');
@@ -24,8 +19,6 @@ function createHeader() {
     homeLink.href = 'index.html'
     homeLink.textContent = "Home";
     home.appendChild(homeLink);
-    
-    // <li class="p-3 text-[#D0DB97]"><a href="index.html">Home</a></li>
     
     const journal = document.createElement('li');
     const journalLink = document.createElement('a');
@@ -63,6 +56,5 @@ function createHeader() {
 function createFooter() { 
 
 }
-
 
 export {createHeader, createFooter}
