@@ -1,9 +1,19 @@
-function createCard(data) {
-    return createCardComponent(data, createAddFavoriteButton()) 
+function createCard(data, buttonHandler) {
+  const button = createAddFavoriteButton();
+  const card = createCardComponent(data, button);
+  
+  button.onclick = () => buttonHandler(data);
+  
+  return card; 
 }
 
-function createJournalCard(data) {
-    return createCardComponent(data, createRemoveFavoriteButton()) 
+function createJournalCard(data, buttonHandler) {
+  const button = createRemoveFavoriteButton();
+  const card = createCardComponent(data, button);
+  
+  button.onclick = () => buttonHandler(data);
+  
+  return card;
 }
 
 // private function
@@ -57,8 +67,8 @@ function createCardComponent(data, button) {
   //card.appendChild(movieGenre);
   //card.appendChild(movieRelease);
   card.appendChild(button);
-  
-  return [card, button];
+
+  return card;
 }
 
 function createAddFavoriteButton()
@@ -79,6 +89,7 @@ function createAddFavoriteButton()
       'hover:bg-amber-800',
       'active:bg-amber-950'
     );
+    
     return addToJournalBtn;
 }
 

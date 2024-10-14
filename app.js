@@ -14,18 +14,20 @@ document.addEventListener('DOMContentLoaded', async () => {
   const movieContainer = document.getElementById('movie-container');
   try {
     const movies = await fetchPopularMovies();
+    
     movies.results.forEach((movie) => {
-      const [movieCard, addToJournalBtn] = createCard(movie);
+      const card = createCard(movie, handleAddToJournal);
 
-      movieContainer.appendChild(movieCard);
+      movieContainer.appendChild(card);
 
-      addToJournalBtn.onclick = () => {
-        addFavorite(movie);
-      };
     });
   } catch (error) {
     console.error(error);
   }
 });
+
+function handleAddToJournal(movie) {
+  addFavorite(movie);
+}
 
 // document.body.insertAdjacentElement('beforeend', createFooter());
