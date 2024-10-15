@@ -5,7 +5,8 @@ import {
   fetchPopularMovies,
   createHeader,
   createCard,
-  addFavorite
+  addFavorite,
+
 } from './modules/index.js';
 
 document.body.insertAdjacentElement('afterbegin', createHeader());
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const movieContainer = document.getElementById('movie-container');
   try {
     const movies = await fetchPopularMovies();
-    
+
     movies.results.forEach((movie) => {
       const card = createCard(movie, handleAddToJournal);
 

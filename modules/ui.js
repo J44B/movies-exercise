@@ -1,18 +1,29 @@
 function createCard(data, buttonHandler) {
   const button = createAddFavoriteButton();
   const card = createCardComponent(data, button);
-  
+
   button.onclick = () => buttonHandler(data);
-  
-  return card; 
+
+  return card;
 }
 
 function createJournalCard(data, buttonHandler) {
   const button = createRemoveFavoriteButton();
   const card = createCardComponent(data, button);
-  
+  card.classList.add('journal-card',
+    'flex',
+    'flex-col',
+    'bg-slate-800',
+    'h-40',
+    'w-2/3',
+    'border-solid',
+    'border-1',
+    'border-slate-400'
+  );
+
+
   button.onclick = () => buttonHandler(data);
-  
+
   return card;
 }
 
@@ -71,48 +82,46 @@ function createCardComponent(data, button) {
   return card;
 }
 
-function createAddFavoriteButton()
-{
-    const addToJournalBtn = document.createElement('button');
-    addToJournalBtn.textContent = 'Add to Journal';
-    addToJournalBtn.classList.add(
-      'bg-amber-600',
-      'border-solid',
-      'border-slate-300',
-      'rounded',
-      'w-1/2',
-      'p-1',
-      'text-xs',
-      'text-orange-100',
-      'mx-auto',
-      'mb-1',
-      'hover:bg-amber-800',
-      'active:bg-amber-950'
-    );
-    
-    return addToJournalBtn;
+function createAddFavoriteButton() {
+  const addToJournalBtn = document.createElement('button');
+  addToJournalBtn.textContent = 'Add to Journal';
+  addToJournalBtn.classList.add(
+    'bg-amber-600',
+    'border-solid',
+    'border-slate-300',
+    'rounded',
+    'w-1/2',
+    'p-1',
+    'text-xs',
+    'text-orange-100',
+    'mx-auto',
+    'mb-1',
+    'hover:bg-amber-800',
+    'active:bg-amber-950'
+  );
+
+  return addToJournalBtn;
 }
 
-function createRemoveFavoriteButton()
-{
-    const removeFromJournalBtn = document.createElement('button');
-    removeFromJournalBtn.textContent = 'Remove from Journal';
-    removeFromJournalBtn.classList.add(
-      'bg-amber-600',
-      'border-solid',
-      'border-slate-300',
-      'rounded',
-      'w-1/2',
-      'p-1',
-      'text-xs',
-      'text-red-100',
-      'mx-auto',
-      'mb-1',
-      'hover:bg-amber-800',
-      'active:bg-amber-950'
-    );
+function createRemoveFavoriteButton() {
+  const removeFromJournalBtn = document.createElement('button');
+  removeFromJournalBtn.textContent = 'Remove from Journal';
+  removeFromJournalBtn.classList.add(
+    'bg-amber-600',
+    'border-solid',
+    'border-slate-300',
+    'rounded',
+    'w-1/2',
+    'p-1',
+    'text-xs',
+    'text-red-100',
+    'mx-auto',
+    'mb-1',
+    'hover:bg-amber-800',
+    'active:bg-amber-950'
+  );
 
-    return removeFromJournalBtn;
+  return removeFromJournalBtn;
 }
 
 function createHeader() {
@@ -199,6 +208,6 @@ function createHeader() {
   return header;
 }
 
-function createFooter() {}
+function createFooter() { }
 
-export { createHeader, createFooter, createCard, createJournalCard};
+export { createHeader, createFooter, createCard, createJournalCard };
