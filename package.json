@@ -2,8 +2,8 @@
   "name": "movies-exercise",
   "source": "index.html",
   "scripts": {
-    "dev": "parcel",
-    "build": "parcel build"
+    "dev": "parcel index.html journal.html",
+    "build": "parcel build index.html journal.html"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
