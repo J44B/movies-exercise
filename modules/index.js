@@ -4,7 +4,14 @@
 
 import { fetchMovies, fetchPopularMovies } from './fetch.js';
 import { addFavorite, removeFavorite, getFavorites } from './storage.js';
-import { createHeader, createFooter, createCard, createJournalCard } from './ui.js';
+import {
+  createHeader,
+  createFooter,
+  createCard,
+  createJournalCard,
+  lupe,
+} from './ui.js';
+import { searchInJournal } from './search.js';
 // --- End import section ---
 
 // --- Begin export section ---
@@ -18,7 +25,9 @@ export {
   createHeader,
   createFooter,
   createCard,
-  createJournalCard
+  createJournalCard,
+  searchInJournal,
+  lupe,
 };
 // export { addFavorite, removeFavorite, getFavorites }
 // export { createHeader, createFooter }

@@ -6,7 +6,7 @@ import {
   createHeader,
   createCard,
   addFavorite,
-
+  lupe,
 } from './modules/index.js';
 
 document.body.insertAdjacentElement('afterbegin', createHeader());
@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       const card = createCard(movie, handleAddToJournal);
 
       movieContainer.appendChild(card);
-
     });
   } catch (error) {
     console.error(error);

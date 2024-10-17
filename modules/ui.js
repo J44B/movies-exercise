@@ -10,7 +10,8 @@ function createCard(data, buttonHandler) {
 function createJournalCard(data, buttonHandler) {
   const button = createRemoveFavoriteButton();
   const card = createCardComponent(data, button);
-  card.classList.add('journal-card',
+  card.classList.add(
+    'journal-card',
     'flex',
     'flex-col',
     'bg-slate-800',
@@ -20,7 +21,6 @@ function createJournalCard(data, buttonHandler) {
     'border-1',
     'border-slate-400'
   );
-
 
   button.onclick = () => buttonHandler(data);
 
@@ -208,6 +208,6 @@ function createHeader() {
   return header;
 }
 
-function createFooter() { }
+function createFooter() {}
 
-export { createHeader, createFooter, createCard, createJournalCard };
+export { createHeader, createFooter, createCard, createJournalCard, lupe };
