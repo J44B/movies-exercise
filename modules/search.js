@@ -9,7 +9,7 @@ const storedMovies = getFavorites();
 
 function searchInJournal(searchValue) {
   return storedMovies.filter(function (object) {
-    return Object.keys(obj).some(function (key) {
+    return Object.keys(object).some(function (key) {
       return object[key].includes(searchValue);
     });
   });
