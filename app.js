@@ -4,12 +4,14 @@ import {
   fetchMovies,
   fetchPopularMovies,
   createHeader,
+  createFooter,
   createCard,
   addFavorite,
   lupe,
 } from './modules/index.js';
 
 document.body.insertAdjacentElement('afterbegin', createHeader());
+document.body.insertAdjacentElement('beforeend', createFooter());
 
 document.addEventListener('DOMContentLoaded', async () => {
   const movieContainer = document.getElementById('movie-container');
@@ -29,5 +31,3 @@ document.addEventListener('DOMContentLoaded', async () => {
 function handleAddToJournal(movie) {
   addFavorite(movie);
 }
-
-// document.body.insertAdjacentElement('beforeend', createFooter());

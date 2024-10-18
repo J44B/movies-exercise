@@ -7,7 +7,6 @@ function addFavorite(item) {
         }
         movies.push(item);
         localStorage.setItem('movies', JSON.stringify(movies));
-        console.log("addFavorite:", movies);
         return movies;
     } catch (error) {
         if (error instanceof FavoriteAddError) {
@@ -20,16 +19,12 @@ function addFavorite(item) {
 
 function removeFavorite(item) {
     let movies = JSON.parse(localStorage.getItem('movies')) || [];
-    console.log("removeFavorite1", movies);
 
     movies = movies.filter(x => x.id !== item.id);
     localStorage.setItem('movies', JSON.stringify(movies));
-
-    console.log("removeFavorite", movies);
 }
 
 function getFavorites() {
-    console.log(localStorage.getItem('movies'));
     return JSON.parse(localStorage.getItem('movies')) || [];
 }
 

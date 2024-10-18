@@ -30,7 +30,7 @@ function createJournalCard(data, buttonHandler) {
 // private function
 function createCardComponent(data, button) {
   const card = document.createElement('div');
-
+  card.setAttribute('id', data.id);
   card.classList.add(
     'flex',
     'flex-col',
@@ -141,6 +141,7 @@ function createHeader() {
   logo.src =
     'https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg';
   const navSearchContainer = document.createElement('div');
+  navSearchContainer.setAttribute('id','search');
   navSearchContainer.classList.add(
     'flex',
     'flex-row',
@@ -192,13 +193,7 @@ function createHeader() {
                         id="searchInput" 
                         placeholder="Search..." 
                         class="border border-gray-300 rounded-lg p-2 w-1/2 focus:outline-none focus:ring-2 focus:ring-gray-800" 
-                    />
-                    <button 
-                        id="searchButton" 
-                        class="ml-2 bg-gray-400 text-black rounded-lg p-2 hover:bg-gray-800 hover:text-white"
-                    >
-                        Search
-                    </button>`;
+                    />`;
 
   header.appendChild(logo);
   header.appendChild(navSearchContainer);
@@ -208,6 +203,26 @@ function createHeader() {
   return header;
 }
 
-function createFooter() {}
+function createFooter() {
+  const footer = document.createElement('footer');
+  footer.classList.add(
+    'flex',
+    'flex-row',
+    'items-center',
+    'justify-center',
+    'm-4',
+    'p-2',
+    'bg-gray-300',
+    'text-gray-700',
+    'text-center'
+  );
+
+  const rightsText = document.createElement('p');
+  rightsText.textContent = 'Alle Rechte vorbehalten wdg-19';
+  rightsText.classList.add('text-lg');
+
+  footer.appendChild(rightsText);
+  return footer;
+}
 
 export { createHeader, createFooter, createCard, createJournalCard, lupe };

@@ -1,15 +1,16 @@
 // file to create the journal page
-import { createHeader, createFooter } from './index.js';
+import { createHeader, createFooter, searchInJournal } from './index.js';
 import { removeFavorite, getFavorites } from './index.js';
 import { createJournalCard } from './index.js';
 
-document.body.insertAdjacentElement('afterbegin', createHeader());
-// document.body.insertAdjacentElement('beforeend', createFooter());
-new init();
+document.body.insertAdjacentElement('afterbegin', createHeader()); 
+document.body.insertAdjacentElement('beforeend', createFooter());
 
+init();
 
 function init() {
   const journalContainer = document.getElementById('journal-container');
+  journalContainer.innerHTML = '';
   try {
     const movies = getFavorites();
 
@@ -26,5 +27,45 @@ function init() {
 
 function handleRemoveFromJournal(movie) {
   removeFavorite(movie);
-  location.reload();
+
+  const journalContainer = document.getElementById('journal-container');
+
+  journalContainer.removeChild(document.getElementById(movie.id.toString()));
+}
+
+let timeoutId;
+const input = document.getElementById('search')
+
+input.addEventListener('input', (event) => {
+
+  const searchValue = event.target.value;
+
+  if(searchValue === '')
+    return init();
+  
+  if (timeoutId) {
+    clearTimeout(timeoutId);
+  }
+
+  timeoutId = setTimeout(() => {
+    searchMovies(searchValue);
+  }, 300); 
+});
+
+function searchMovies(queryString){
+  const journalContainer = document.getElementById('journal-container');
+  journalContainer.innerHTML = '';
+
+  try {
+    const movies = searchInJournal(queryString);
+    console.log('input event:', movies);
+
+    movies.forEach((movie) => {
+      const card = createJournalCard(movie, handleRemoveFromJournal);
+
+      journalContainer.appendChild(card);
+    });
+  } catch (error) {
+    console.error(error);
+  }
 }
