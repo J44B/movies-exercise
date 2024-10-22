@@ -1,15 +1,36 @@
-function createCard(data) {
-    return createCardComponent(data, createAddFavoriteButton()) 
+function createCard(data, buttonHandler) {
+  const button = createAddFavoriteButton();
+  const card = createCardComponent(data, button);
+
+  button.onclick = () => buttonHandler(data);
+
+  return card;
 }
 
-function createJournalCard(data) {
-    return createCardComponent(data, createRemoveFavoriteButton()) 
+function createJournalCard(data, buttonHandler) {
+  const button = createRemoveFavoriteButton();
+  const card = createCardComponent(data, button);
+  card.classList.add(
+    'journal-card',
+    'flex',
+    'flex-col',
+    'bg-slate-800',
+    'h-40',
+    'w-2/3',
+    'border-solid',
+    'border-1',
+    'border-slate-400'
+  );
+
+  button.onclick = () => buttonHandler(data);
+
+  return card;
 }
 
 // private function
 function createCardComponent(data, button) {
   const card = document.createElement('div');
-
+  card.setAttribute('id', data.id);
   card.classList.add(
     'flex',
     'flex-col',
@@ -57,51 +78,50 @@ function createCardComponent(data, button) {
   //card.appendChild(movieGenre);
   //card.appendChild(movieRelease);
   card.appendChild(button);
-  
-  return [card, button];
+
+  return card;
 }
 
-function createAddFavoriteButton()
-{
-    const addToJournalBtn = document.createElement('button');
-    addToJournalBtn.textContent = 'Add to Journal';
-    addToJournalBtn.classList.add(
-      'bg-amber-600',
-      'border-solid',
-      'border-slate-300',
-      'rounded',
-      'w-1/2',
-      'p-1',
-      'text-xs',
-      'text-orange-100',
-      'mx-auto',
-      'mb-1',
-      'hover:bg-amber-800',
-      'active:bg-amber-950'
-    );
-    return addToJournalBtn;
+function createAddFavoriteButton() {
+  const addToJournalBtn = document.createElement('button');
+  addToJournalBtn.textContent = 'Add to Journal';
+  addToJournalBtn.classList.add(
+    'bg-amber-600',
+    'border-solid',
+    'border-slate-300',
+    'rounded',
+    'w-1/2',
+    'p-1',
+    'text-xs',
+    'text-orange-100',
+    'mx-auto',
+    'mb-1',
+    'hover:bg-amber-800',
+    'active:bg-amber-950'
+  );
+
+  return addToJournalBtn;
 }
 
-function createRemoveFavoriteButton()
-{
-    const removeFromJournalBtn = document.createElement('button');
-    removeFromJournalBtn.textContent = 'Remove from Journal';
-    removeFromJournalBtn.classList.add(
-      'bg-amber-600',
-      'border-solid',
-      'border-slate-300',
-      'rounded',
-      'w-1/2',
-      'p-1',
-      'text-xs',
-      'text-red-100',
-      'mx-auto',
-      'mb-1',
-      'hover:bg-amber-800',
-      'active:bg-amber-950'
-    );
+function createRemoveFavoriteButton() {
+  const removeFromJournalBtn = document.createElement('button');
+  removeFromJournalBtn.textContent = 'Remove from Journal';
+  removeFromJournalBtn.classList.add(
+    'bg-amber-600',
+    'border-solid',
+    'border-slate-300',
+    'rounded',
+    'w-1/2',
+    'p-1',
+    'text-xs',
+    'text-red-100',
+    'mx-auto',
+    'mb-1',
+    'hover:bg-amber-800',
+    'active:bg-amber-950'
+  );
 
-    return removeFromJournalBtn;
+  return removeFromJournalBtn;
 }
 
 function createHeader() {
@@ -121,6 +141,7 @@ function createHeader() {
   logo.src =
     'https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg';
   const navSearchContainer = document.createElement('div');
+  navSearchContainer.setAttribute('id','search');
   navSearchContainer.classList.add(
     'flex',
     'flex-row',
@@ -172,13 +193,7 @@ function createHeader() {
                         id="searchInput" 
                         placeholder="Search..." 
                         class="border border-gray-300 rounded-lg p-2 w-1/2 focus:outline-none focus:ring-2 focus:ring-gray-800" 
-                    />
-                    <button 
-                        id="searchButton" 
-                        class="ml-2 bg-gray-400 text-black rounded-lg p-2 hover:bg-gray-800 hover:text-white"
-                    >
-                        Search
-                    </button>`;
+                    />`;
 
   header.appendChild(logo);
   header.appendChild(navSearchContainer);
@@ -188,6 +203,26 @@ function createHeader() {
   return header;
 }
 
-function createFooter() {}
+function createFooter() {
+  const footer = document.createElement('footer');
+  footer.classList.add(
+    'flex',
+    'flex-row',
+    'items-center',
+    'justify-center',
+    'm-4',
+    'p-2',
+    'bg-gray-300',
+    'text-gray-700',
+    'text-center'
+  );
 
-export { createHeader, createFooter, createCard, createJournalCard};
+  const rightsText = document.createElement('p');
+  rightsText.textContent = 'Alle Rechte vorbehalten wdg-19';
+  rightsText.classList.add('text-lg');
+
+  footer.appendChild(rightsText);
+  return footer;
+}
+
+export { createHeader, createFooter, createCard, createJournalCard, lupe };

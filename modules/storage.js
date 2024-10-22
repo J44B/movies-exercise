@@ -1,14 +1,13 @@
 // functions to set and get data from local storage
 function addFavorite(item) {
-    const movies = JSON.parse(localStorage.getItem('movies')) || [];   
+    const movies = JSON.parse(localStorage.getItem('movies')) || [];
     try {
         if (movies.some(x => x.id === item.id)) {
             throw new FavoriteAddError();
         }
         movies.push(item);
         localStorage.setItem('movies', JSON.stringify(movies));
-        console.log("addFavorite" + movies);
-        
+        return movies;
     } catch (error) {
         if (error instanceof FavoriteAddError) {
             alert('This favorite already exists!');
@@ -19,18 +18,14 @@ function addFavorite(item) {
 }
 
 function removeFavorite(item) {
-    let movies = JSON.parse(localStorage.getItem('movies')) || [];   
-    console.log("removeFavorite1", movies);
+    let movies = JSON.parse(localStorage.getItem('movies')) || [];
 
     movies = movies.filter(x => x.id !== item.id);
     localStorage.setItem('movies', JSON.stringify(movies));
-    
-    console.log("removeFavorite", movies);
 }
 
 function getFavorites() {
-    console.log(localStorage.getItem('movies'));
-    return localStorage.getItem('movies') || [];
+    return JSON.parse(localStorage.getItem('movies')) || [];
 }
 
 class FavoriteAddError extends Error {

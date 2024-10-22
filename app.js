@@ -4,28 +4,30 @@ import {
   fetchMovies,
   fetchPopularMovies,
   createHeader,
+  createFooter,
   createCard,
-  addFavorite
+  addFavorite,
+  lupe,
 } from './modules/index.js';
 
 document.body.insertAdjacentElement('afterbegin', createHeader());
+document.body.insertAdjacentElement('beforeend', createFooter());
 
 document.addEventListener('DOMContentLoaded', async () => {
   const movieContainer = document.getElementById('movie-container');
   try {
     const movies = await fetchPopularMovies();
+
     movies.results.forEach((movie) => {
-      const [movieCard, addToJournalBtn] = createCard(movie);
+      const card = createCard(movie, handleAddToJournal);
 
-      movieContainer.appendChild(movieCard);
-
-      addToJournalBtn.onclick = () => {
-        addFavorite(movie);
-      };
+      movieContainer.appendChild(card);
     });
   } catch (error) {
     console.error(error);
   }
 });
 
-// document.body.insertAdjacentElement('beforeend', createFooter());
+function handleAddToJournal(movie) {
+  addFavorite(movie);
+}

@@ -2,25 +2,13 @@
 
 // --- Begin import section ---
 
-import { fetchMovies, fetchPopularMovies } from './fetch.js';
-import { addFavorite, removeFavorite, getFavorites } from './storage.js';
-import { createHeader, createFooter, createCard, createJournalCard } from './ui.js';
-// --- End import section ---
-
-// --- Begin export section ---
-
+export { fetchMovies, fetchPopularMovies } from './fetch.js';
+export { addFavorite, removeFavorite, getFavorites } from './storage.js';
 export {
-  fetchMovies,
-  fetchPopularMovies,
-  addFavorite,
-  removeFavorite,
-  getFavorites,
   createHeader,
   createFooter,
   createCard,
-  createJournalCard
-};
-// export { addFavorite, removeFavorite, getFavorites }
-// export { createHeader, createFooter }
-
-// --- Begin export section ---
+  createJournalCard,
+  lupe,
+} from './ui.js';
+export { searchInJournal } from './search.js';
