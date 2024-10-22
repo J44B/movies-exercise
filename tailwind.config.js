@@ -2,9 +2,8 @@
 module.exports = {
   content: [
     'index.html',
-    'journal.html',
-    './src/**/*.{html,js}',
-    './modules/**/*.{html,js}',
+    './src/**/*.{html,js,jsx}',
+    './modules/**/*.{html,js,jsx}',
   ], // Include any files that you want to apply the styles to
   theme: {
     extend: {},

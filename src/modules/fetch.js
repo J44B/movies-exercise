@@ -2,14 +2,13 @@
 
 // function to fetch data for manual search
 
-let query = '';
-const moviesUrl = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1&api_key=b964b6c561a2a384e332abb16d0c63e2`;
+async function fetchMovies(query) {
+  const moviesUrl = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1&api_key=b964b6c561a2a384e332abb16d0c63e2`;
 
-async function fetchMovies() {
   try {
     const response = await fetch(moviesUrl);
 
-    if (!response.ok) throw new Error('Movie request failed');
+    if (!response.ok) throw new Error('fetchMovies request failed');
 
     const fetchedMovies = await response.json();
 
@@ -28,7 +27,7 @@ async function fetchPopularMovies() {
   try {
     const response = await fetch(popularMoviesUrl);
 
-    if (!response.ok) throw new Error('Movie request failed');
+    if (!response.ok) throw new Error('fetchPopularMovies request failed');
 
     const fetchedPopularMovies = await response.json();
 
