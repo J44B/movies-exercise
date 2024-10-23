@@ -4,13 +4,12 @@ import { Card, Button } from '../components';
 import { removeFavorite, getFavorites } from '../modules';
 
 export const Journal = () => {
-  const { searchQuery, setSearchQuery } = useOutletContext();
+  const { searchQuery } = useOutletContext();
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // setSearchQuery - Call this function in production. In dev rendering happens twice.
     const getData = () => {
       try {
         setLoading(true);

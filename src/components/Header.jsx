@@ -1,9 +1,14 @@
 import { Navbar } from './';
+import { useLocation } from 'react-router-dom';
 
-export const Header = ({ setSearchQuery }) => {
+export const Header = ({ searchQuery, setSearchQuery }) => {
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
+
+  const location = useLocation();
+  console.log(location);
+
   return (
     <header className="flex flex-row align-center justify-between m-4 p-2 bg-gray-300">
       <img
@@ -15,13 +20,16 @@ export const Header = ({ setSearchQuery }) => {
         className="flex flex-row flex-nowrap gap-4 items-center border-3 rounded-md"
       >
         <Navbar />
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Search..."
-          className="border border-gray-300 rounded-lg p-2 w-1/2 focus:outline-none focus:ring-2 focus:ring-gray-800"
-          onChange={handleSearchChange}
-        />
+        {!location.pathname.includes('movie') && (
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+            className="border border-gray-300 rounded-lg p-2 w-1/2 focus:outline-none focus:ring-2 focus:ring-gray-800"
+            onChange={handleSearchChange}
+            value={searchQuery}
+          />
+        )}
       </div>
     </header>
   );

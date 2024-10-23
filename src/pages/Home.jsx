@@ -4,13 +4,12 @@ import { Card, Button } from '../components';
 import { addFavorite, fetchPopularMovies, fetchMovies } from '../modules';
 
 export const Home = () => {
-  const { searchQuery, setSearchQuery } = useOutletContext();
+  const { searchQuery } = useOutletContext();
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // setSearchQuery - Call this function in production. In dev rendering happens twice.
     const getData = async () => {
       try {
         setLoading(true);
