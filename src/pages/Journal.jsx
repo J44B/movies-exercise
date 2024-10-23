@@ -4,7 +4,7 @@ import { Card, Button } from '../components';
 import { removeFavorite, getFavorites } from '../modules';
 
 export const Journal = () => {
-  const { searchQuery } = useOutletContext();
+  const { searchQuery, setSearchQuery } = useOutletContext();
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);

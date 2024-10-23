@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '../components';
 
 export const MovieDetail = () => {
+  // wie man den Search verstecken?
   const { id } = useParams();
   const navigate = useNavigate();
 

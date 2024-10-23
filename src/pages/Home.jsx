@@ -4,7 +4,7 @@ import { Card, Button } from '../components';
 import { addFavorite, fetchPopularMovies, fetchMovies } from '../modules';
 
 export const Home = () => {
-  const { searchQuery } = useOutletContext();
+  const { searchQuery, setSearchQuery } = useOutletContext();
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);

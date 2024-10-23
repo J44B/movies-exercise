@@ -13,7 +13,7 @@ export const MainLayout = () => {
     <>
       <Header setSearchQuery={setSearchQuery} />
       <main className="container mx-auto">
-        <Outlet context={{ searchQuery }} />
+        <Outlet context={{ searchQuery, setSearchQuery }} />
       </main>
       <Footer />
     </>
