@@ -6,7 +6,7 @@ export const MainLayout = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    setSearchQuery(''); // Скидає searchQuery при переході на нову сторінку
+    setSearchQuery('');
   }, [location]);
 
   return (

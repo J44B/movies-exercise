@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const Card = ({ data, button }) => {
   return (
     <div
@@ -7,12 +9,18 @@ export const Card = ({ data, button }) => {
       <img
         className="h-2/3 w-full object-contain shadow-lg shadow-slate-400"
         src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
+        alt={data.title}
       />
-      <p className="truncate text-white font-bold p-2 mt-2">{data.title}</p>
 
-      {button}
+      <div className="flex-grow flex flex-col justify-between p-2">
+        <Link
+          to={`/movie/${data.id}`}
+          className="truncate text-white font-bold"
+        >
+          {data.title}
+        </Link>
+        {button}
+      </div>
     </div>
   );
 };
-
-//<p className="text-white p-2 mt-2">{data.genres}</p>

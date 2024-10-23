@@ -10,6 +10,7 @@ export const Journal = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // setSearchQuery - Call this function in production. In dev rendering happens twice.
     const getData = () => {
       try {
         setLoading(true);

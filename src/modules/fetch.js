@@ -36,5 +36,19 @@ async function fetchPopularMovies() {
     console.error(error);
   }
 }
+async function fetchMovie(id) {
+  const url = `https://api.themoviedb.org/3/movie/${id}?api_key=b964b6c561a2a384e332abb16d0c63e2
+`;
 
-export { fetchMovies, fetchPopularMovies };
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) throw new Error('fetchMovie request failed');
+
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export { fetchMovies, fetchPopularMovies, fetchMovie };
